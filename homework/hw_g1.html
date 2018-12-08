@@ -12,12 +12,50 @@
 				filter: blur(10px) grayscale(100%);
 			}
 			
-			img:hover{
-				filter: blur(0px) grayscale(0%);
-			}
 		</style>
+		
 	</head>
 	<body> 
 		<img src="../images/flowers.jpg">
 	</body>
+	
+	<script>
+	
+    
+		var image = document.querySelector("img");
+		var blur = 10;
+		var gray = 100;
+
+		image.onwheel = function(e){
+			var grid = e.deltaY;
+			blur += grid/100;
+			gray += grid/10;
+
+
+            if (blur > 10) {
+                blur = 10;
+            } else {
+                blur = blur;
+            }
+            if (blur < 0) {
+                blur = 0;
+            } else {
+                blur = blur;
+            }
+            if (gray > 100) {
+                gray = 100;
+            } else {
+                gray = gray;
+            }
+            if (gray < 0) {
+                gray =0;
+            } else {
+                gray = gray;
+            }
+
+			
+			image.style.filter = `blur(${blur}px) grayscale(${gray}%)`;
+		}
+	
+	</script>
 </html>
